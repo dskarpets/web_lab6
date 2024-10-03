@@ -1,0 +1,100 @@
+body {
+    font-family: Montserrat, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    position: relative;
+    height: 100vh;
+}
+
+.block {
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Block 1 - Full width top header */
+.block-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background-color: #216869;
+    color: #eef0eb;
+    text-align: center;
+}
+
+/* Block 2 - Left sidebar */
+.block-2 {
+    position: absolute;
+    top: 150px;
+    left: 0;
+    width: 25%;
+    height: calc(100% - 300px);
+    background-color: #9cc5a1;
+}
+
+/* Block 3 - Main content (center) */
+.block-3 {
+    position: absolute;
+    top: 150px;
+    left: 25%;
+    width: 50%;
+    height: calc(100% - 300px);
+    background-color: white;
+}
+
+/* Block 4 - Right sidebar */
+.block-4 {
+    position: absolute;
+    top: 150px;
+    right: 0;
+    width: 25%;
+    height: calc(100% - 300px);
+    background-color: #9cc5a1;
+}
+
+/* Block 5 - Bottom bar in the center */
+.block-5 {
+    position: absolute;
+    bottom: 150px;
+    left: 25%;
+    width: 50%;
+    height: 100px;
+    background-color: #49a078;
+}
+
+/* Block 6 - Full width bottom footer */
+.block-6 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background-color: #216869;
+    color: #eef0eb;
+    text-align: center;
+}
+
+.image-container img {
+    display: block;
+    margin: 0 auto;
+    width: 1024px;
+    height: 640px;
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    text-decoration: underline;
+}

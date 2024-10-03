@@ -1,0 +1,81 @@
+body {
+    font-family: Montserrat, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.block-1 {
+    background-color: #216869;
+    color: #eef0eb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    flex: 3; /* Occupies full width of the first row */
+}
+
+.row {
+    display: flex;
+    flex: 1; /* Takes equal height for each row */
+}
+
+.block-2 {
+    background-color: #9cc5a1;
+    font-size: 20px;
+    flex: 1; /* Takes 1 part of the row */
+}
+
+.block-3 {
+    background-color: white;
+    flex: 3; /* Takes 3 parts of the row */
+}
+
+.block-4 {
+    background-color: #9cc5a1;
+    flex: 1; /* Takes 1 part of the row */
+}
+
+.block-5 {
+    background-color: #49a078;
+    flex: 3; /* Takes 3 parts of the second row */
+}
+
+.block-6 {
+    background-color: #216869;
+    color: #eef0eb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    flex: 4; /* Occupies two columns in the last row */
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.image-container img {
+    max-width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    text-decoration: underline;
+}
