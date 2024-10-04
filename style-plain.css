@@ -15,68 +15,87 @@ body {
     box-sizing: border-box;
 }
 
-/* Block 1 - Full width top header */
 .block-1 {
-    position: absolute;
+    position: absolute;         /* Positioning the block */
     top: 0;
     left: 0;
     right: 0;
-    height: 150px;
+    height: 150px;             /* Set the height of the block */
     background-color: #216869;
     color: #eef0eb;
-    text-align: center;
+    text-align: left;          /* Align text to the left */
+    padding-left: 10px;        /* Optional: add padding */
 }
 
-/* Block 2 - Left sidebar */
+.block-1 h1 {
+    position: absolute;         /* Positioning the text */
+    top: 50%;                  /* Move down to the middle */
+    left: 20px;                /* Adjust for left alignment */
+    transform: translateY(-50%);
+}
+
 .block-2 {
     position: absolute;
     top: 150px;
     left: 0;
-    width: 25%;
-    height: calc(100% - 300px);
+    width: 16%;
+    height: calc(100% - 150px);
     background-color: #9cc5a1;
+    padding: 20px;
+
 }
 
-/* Block 3 - Main content (center) */
+.block-2 ol {
+    font-size: 20px;
+    left: 20px;
+}
+
 .block-3 {
     position: absolute;
     top: 150px;
-    left: 25%;
+    left: 18.33%;
     width: 50%;
     height: calc(100% - 300px);
     background-color: white;
+    padding: 20px;
 }
 
-/* Block 4 - Right sidebar */
 .block-4 {
     position: absolute;
     top: 150px;
     right: 0;
-    width: 25%;
-    height: calc(100% - 300px);
+    width: 16%;
+    height: 100%;
     background-color: #9cc5a1;
+    padding: 20px;
 }
 
-/* Block 5 - Bottom bar in the center */
 .block-5 {
     position: absolute;
-    bottom: 150px;
-    left: 25%;
-    width: 50%;
-    height: 100px;
+    bottom: -40px;
+    left: 18.33%;
+    width: 61%;
+    height: 110px;
     background-color: #49a078;
+    padding: 20px;
 }
 
-/* Block 6 - Full width bottom footer */
 .block-6 {
     position: absolute;
-    bottom: 0;
+    bottom: -190px;
     left: 0;
-    right: 0;
+    right: 18.33%;
     height: 150px;
     background-color: #216869;
     color: #eef0eb;
     text-align: center;
+}
+
+.block-6 h1 {
+    position: absolute;         /* Positioning the text */
+    top: 50%;                  /* Move down to the middle */
+    left: 20px;                /* Adjust for left alignment */
+    transform: translateY(-50%);
 }
 
 .image-container img {

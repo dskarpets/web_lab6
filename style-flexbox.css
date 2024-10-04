@@ -11,60 +11,80 @@ body {
     height: 100vh;
 }
 
+/* Block-1: Header - full width */
 .block-1 {
     background-color: #216869;
     color: #eef0eb;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     height: 150px;
-    flex: 3; /* Occupies full width of the first row */
+    padding-left: 20px;
+    flex-shrink: 0;
 }
 
+/* Row for Block 2, Block 3, and Block 4 */
 .row {
     display: flex;
-    flex: 1; /* Takes equal height for each row */
+    flex: 1;
 }
 
+/* Block 2 and Block 4 */
 .block-2 {
     background-color: #9cc5a1;
     font-size: 20px;
-    flex: 1; /* Takes 1 part of the row */
+    flex: 1; /* Adjust to control width */
+    padding: 20px; /* Add padding for spacing */
 }
 
 .block-3 {
     background-color: white;
-    flex: 3; /* Takes 3 parts of the row */
+    flex: 3; /* Adjust to control width */
+    padding: 20px; /* Add padding for spacing */
 }
 
 .block-4 {
     background-color: #9cc5a1;
-    flex: 1; /* Takes 1 part of the row */
+    flex: 1; /* Adjust to control width */
+    padding: 20px; /* Add padding for spacing */
 }
 
+/* Block-5 directly below Block-3 */
 .block-5 {
     background-color: #49a078;
-    flex: 3; /* Takes 3 parts of the second row */
+    flex: 3; /* Height as Block-3 */
+    padding: 60px; /* Add padding for spacing */
 }
 
+/* Block-6 should be under Block-2 and Block-5 */
 .block-6 {
     background-color: #216869;
     color: #eef0eb;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     height: 150px;
-    flex: 4; /* Occupies two columns in the last row */
+    padding: 20px; /* Add padding for spacing */
+    flex: 3.78 0 150px; /* Set fixed height */
 }
 
-.image-container {
+.image-container img{
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 1024px;
+    height: 640px;
 }
 
-.image-container img {
-    max-width: 100%; /* Make image responsive */
-    height: auto; /* Maintain aspect ratio */
+.help-block {
+    background-color: #9cc5a1;
+    flex: 1;
+}
+
+/* Ensure all columns stretch to fit */
+.middle-row {
+    display: flex;
+    flex: 1;
 }
 
 h1, h2 {
