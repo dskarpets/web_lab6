@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Головна</title>
-    <link rel="stylesheet" href="style-grid.css">
+    <link rel="stylesheet" href="style-mobile.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -17,9 +17,9 @@
     <nav class="block block-2">
         <ol>
             <li><a href="index.html">Головна</a></li>
-            <li><a href="index-grid.html"><strong>Головна (Grid CSS)</strong></a></li>
+            <li><a href="index-grid.html">Головна (Grid CSS)</a></li>
             <li><a href="index-flexbox.html">Головна (Flexbox CSS)</a></li>
-            <li><a href="index-mobile.html">Головна (мобільна)</a></li>
+            <li><a href="index-mobile.html"><strong>Головна (мобільна)</strong></a></li>
             <li><a href="index-mail.html">Головна (поштова)</a></li>
             <li><a href="pages/page1.html">Кролі</a></li>
             <li><a href="pages/page2.html">Собаки</a></li>
@@ -29,16 +29,17 @@
         </ol>
     </nav>
     <main class="block block-3">
-        <img src="images/pets.jpeg" alt="Фотографія домашніх тварин" usemap="#image-map">
+        <div class="image-container">
+            <img src="images/pets.jpeg" alt="Фотографія домашніх тварин" usemap="#image-map">
 
-        <map name="image-map">
-            <area alt="Кролі" title="Кролі" href="pages/page1.html" coords="1,218,213,611" shape="rect">
-            <area alt="Морські свинки" title="Морські свинки" href="pages/page3.html" coords="582,631,425,428" shape="rect">
-            <area alt="Коти" title="Коти" href="pages/page4.html" coords="547,168,533,425,585,426,583,610,687,607,716,482,701,365,696,303,701,258,701,204,692,155" shape="poly">
-            <area alt="Собаки" title="Собаки" href="pages/page2.html" coords="223,58,219,605,410,608,423,428,519,416,500,18" shape="poly">
-            <area alt="Папуги" title="Папуги" href="pages/page5.html" coords="706,169,1021,633" shape="rect">
-        </map>
-
+            <map name="image-map">
+                <area alt="Кролі" title="Кролі" href="pages/page1.html" coords="1,218,213,611" shape="rect">
+                <area alt="Морські свинки" title="Морські свинки" href="pages/page3.html" coords="582,631,425,428" shape="rect">
+                <area alt="Коти" title="Коти" href="pages/page4.html" coords="547,168,533,425,585,426,583,610,687,607,716,482,701,365,696,303,701,258,701,204,692,155" shape="poly">
+                <area alt="Собаки" title="Собаки" href="pages/page2.html" coords="223,58,219,605,410,608,423,428,519,416,500,18" shape="poly">
+                <area alt="Папуги" title="Папуги" href="pages/page5.html" coords="706,169,1021,633" shape="rect">
+            </map>
+        </div>
     </main>
 
     <aside class="block block-4">

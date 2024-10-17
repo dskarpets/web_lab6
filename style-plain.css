@@ -16,21 +16,21 @@ body {
 }
 
 .block-1 {
-    position: absolute;         /* Positioning the block */
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 150px;             /* Set the height of the block */
+    height: 150px;
     background-color: #216869;
     color: #eef0eb;
-    text-align: left;          /* Align text to the left */
-    padding-left: 10px;        /* Optional: add padding */
+    text-align: left;
+    padding-left: 10px;
 }
 
 .block-1 h1 {
-    position: absolute;         /* Positioning the text */
-    top: 50%;                  /* Move down to the middle */
-    left: 20px;                /* Adjust for left alignment */
+    position: absolute;
+    top: 50%;
+    left: 20px;
     transform: translateY(-50%);
 }
 
@@ -92,9 +92,9 @@ body {
 }
 
 .block-6 h1 {
-    position: absolute;         /* Positioning the text */
-    top: 50%;                  /* Move down to the middle */
-    left: 20px;                /* Adjust for left alignment */
+    position: absolute;
+    top: 50%;
+    left: 20px;
     transform: translateY(-50%);
 }
 
