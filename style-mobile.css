@@ -81,7 +81,6 @@ a:hover {
 
 @media (max-width: 768px) {
     .container {
-
         grid-template-areas:
         "block-1"
         "block-2"
@@ -95,7 +94,7 @@ a:hover {
     }
 
     .block-1, .block-6 {
-        justify-self: center;
+        justify-content: center;
     }
 
     .image-container img {
