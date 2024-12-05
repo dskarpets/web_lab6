@@ -42,9 +42,7 @@
             </form>
         </div>
 
-
         <script>
-            // Додати новий підпункт
             function addSubmenu(event) {
                 const menuItem = event.target.closest('.menu-item'); // Знаходимо найближчий елемент меню
                 const submenuContainer = menuItem.querySelector('.submenu'); // Знаходимо контейнер підпунктів
@@ -54,16 +52,15 @@
                     return;
                 }
 
-                const newSubmenu = document.createElement('div'); // Створюємо новий елемент підпункту
+                const newSubmenu = document.createElement('div');
                 newSubmenu.classList.add('submenu-item');
                 newSubmenu.innerHTML = `
         <input type="text" name="submenuTitle[]" placeholder="Назва підпункту" required>
         <input type="url" name="submenuLink[]" placeholder="Посилання для підпункту">
     `;
-                submenuContainer.appendChild(newSubmenu); // Додаємо новий підпункт у контейнер
+                submenuContainer.appendChild(newSubmenu);
             }
 
-            // Прив'язка подій до існуючих кнопок
             document.addEventListener('DOMContentLoaded', () => {
                 document.querySelectorAll('.addSubmenu').forEach(button => {
                     button.addEventListener('click', addSubmenu);
@@ -73,7 +70,6 @@
                 document.getElementById('menuForm').addEventListener('submit', saveMenu);
             });
 
-            // Додати новий пункт меню
             function addMenuItem() {
                 const menuItems = document.getElementById('menuItems');
                 const newItem = document.createElement('div');
@@ -85,7 +81,6 @@
     `;
                 menuItems.appendChild(newItem);
 
-                // Прив'язуємо подію додавання підпунктів до нової кнопки
                 const newButton = newItem.querySelector('.addSubmenu');
                 newButton.addEventListener('click', addSubmenu);
             }
@@ -96,17 +91,16 @@
                 const formData = new FormData(event.target);
                 const menuData = {};
 
-                // Збираємо дані з форми
                 const menuItems = document.querySelectorAll('#menuItems .menu-item');
                 menuItems.forEach((menuItem, index) => {
-                    const menuKey = index + 1; // Генеруємо ключ як номер елемента
+                    const menuKey = index + 1;
                     const submenus = [];
 
                     const submenuElements = menuItem.querySelectorAll('.submenu > div');
                     submenuElements.forEach((submenuElement) => {
                         const submenuTitle = submenuElement.querySelector('input[name="submenuTitle[]"]').value;
                         if (submenuTitle) {
-                            submenus.push(submenuTitle); // Додаємо тільки назву підпункту
+                            submenus.push(submenuTitle);
                         }
                     });
 
@@ -123,7 +117,7 @@
                 alert('Меню збережено!');
             }
         </script>
-       <!-- <img src="images/pets.jpeg" alt="Фотографія домашніх тварин" usemap="#image-map">
+       <img src="images/pets.jpeg" alt="Фотографія домашніх тварин" usemap="#image-map">
 
         <map name="image-map">
             <area alt="Кролі" title="Кролі" href="pages/page1.html" coords="1,218,213,611" shape="rect">
@@ -131,7 +125,7 @@
             <area alt="Коти" title="Коти" href="pages/page4.html" coords="547,168,533,425,585,426,583,610,687,607,716,482,701,365,696,303,701,258,701,204,692,155" shape="poly">
             <area alt="Собаки" title="Собаки" href="pages/page2.html" coords="223,58,219,605,410,608,423,428,519,416,500,18" shape="poly">
             <area alt="Папуги" title="Папуги" href="pages/page5.html" coords="706,169,1021,633" shape="rect">
-        </map>-->
+        </map>
 
     </main>
 

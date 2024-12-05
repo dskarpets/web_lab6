@@ -103,9 +103,16 @@ button:hover {
 }
 
 .dropdown {
+    background-color: #3d875e;
     position: relative;
     display: inline-block;
     padding: 10px;
+    margin-right: 20px;
+    border-right: 2px solid #ccc;
+}
+
+.dropdown:last-child {
+    border-right: none;
 }
 
 .dropdown-content {
@@ -125,7 +132,7 @@ button:hover {
 }
 
 .dropdown-content a:hover {
-    background-color: #ddd;
+    background-color: #9cc5a1;
 }
 
 .dropdown:hover .dropdown-content {
