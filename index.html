@@ -32,34 +32,65 @@
                 <div id="menuItems">
                     <div class="menu-item">
                         <input type="text" name="menuTitle[]" placeholder="Назва елементу меню" required>
-                        <textarea name="submenu[]" placeholder="Введіть підпункти через кому"></textarea>
-                        <input type="url" name="menuLink[]" placeholder="Посилання (необов'язково)">
+                        <div class="submenu">
+                            <input type="text" name="submenuTitle[]" placeholder="Назва підпункту">
+                            <input type="url" name="submenuLink[]" placeholder="Посилання для підпункту">
+                        </div>
+                        <button type="button" class="addSubmenu">Додати підпункт</button>
                     </div>
                 </div>
-                <button type="button" id="addItem">Додати пункт</button>
+                <button type="button" id="addItem">Додати пункт меню</button>
                 <button type="submit">Зберегти меню</button>
             </form>
         </div>
+
         <script>
+            // Додати новий пункт меню
             document.getElementById('addItem').addEventListener('click', () => {
                 const menuItems = document.getElementById('menuItems');
                 const newItem = document.createElement('div');
                 newItem.classList.add('menu-item');
                 newItem.innerHTML = `
         <input type="text" name="menuTitle[]" placeholder="Назва елементу меню" required>
-        <textarea name="submenu[]" placeholder="Введіть підпункти через кому"></textarea>
-        <input type="url" name="menuLink[]" placeholder="Посилання (необов'язково)">
+        <div class="submenu">
+            <input type="text" name="submenuTitle[]" placeholder="Назва підпункту">
+            <input type="url" name="submenuLink[]" placeholder="Посилання для підпункту">
+        </div>
+        <button type="button" class="addSubmenu">Додати підпункт</button>
     `;
                 menuItems.appendChild(newItem);
+
+                // Прив'язати функціонал додавання підпунктів до нового пункту меню
+                newItem.querySelector('.addSubmenu').addEventListener('click', addSubmenu);
             });
 
+            // Додати новий підпункт
+            function addSubmenu(event) {
+                const submenu = event.target.previousElementSibling;
+                const newSubmenu = document.createElement('div');
+                newSubmenu.innerHTML = `
+        <input type="text" name="submenuTitle[]" placeholder="Назва підпункту">
+        <input type="url" name="submenuLink[]" placeholder="Посилання для підпункту">
+    `;
+                submenu.appendChild(newSubmenu);
+            }
+
+            // Відправити меню на сервер
             document.getElementById('menuForm').addEventListener('submit', async (event) => {
                 event.preventDefault();
                 const formData = new FormData(event.target);
-                const data = Object.fromEntries(formData.entries());
+
+                // Організація даних у форматі JSON
+                const menuData = {};
+                [...formData.entries()].forEach(([key, value]) => {
+                    if (!menuData[key]) menuData[key] = [];
+                    menuData[key].push(value);
+                });
+
+                // Надсилання на сервер
                 await fetch('save_menu.php', {
                     method: 'POST',
-                    body: JSON.stringify(data),
+                    body: JSON.stringify(menuData),
                     headers: { 'Content-Type': 'application/json' },
                 });
                 alert('Меню збережено!');

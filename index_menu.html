@@ -32,22 +32,32 @@
     <script>
       async function loadMenu() {
         const response = await fetch('menu.json');
-        const data = await response.json();
+        const menuData = await response.json();
         const menuContainer = document.getElementById('menuDisplay');
+
+        // Очистити попередній контент
         menuContainer.innerHTML = '';
-        data['menuTitle[]'].forEach((title, index) => {
-          const submenu = data['submenu[]'][index].split(',').map(item => `<li>${item}</li>`).join('');
-          menuContainer.innerHTML += `
-            <div>
-                <h3>${title}</h3>
-                <ul>${submenu}</ul>
-            </div>
+
+        // Побудова меню
+        menuData['menuTitle[]'].forEach((menuTitle, index) => {
+          const submenuTitle = menuData['submenuTitle[]'][index];
+          const submenuLink = menuData['submenuLink[]'][index];
+
+          const menuElement = document.createElement('div');
+          menuElement.innerHTML = `
+            <h3>${menuTitle}</h3>
+            <ul>
+                <li><a href="${submenuLink || '#'}">${submenuTitle}</a></li>
+            </ul>
         `;
+          menuContainer.appendChild(menuElement);
         });
       }
 
-      setInterval(loadMenu, 5000); // Оновлення кожні 5 секунд
+      // Оновлення меню кожні 5 секунд
+      setInterval(loadMenu, 5000);
       loadMenu();
+
 
     </script>
     <!--<img src="images/pets.jpeg" alt="Фотографія домашніх тварин" usemap="#image-map">
