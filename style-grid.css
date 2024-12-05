@@ -69,8 +69,60 @@ a:hover {
     text-decoration: underline;
 }
 
+/* Відступи між пунктами меню */
+.menu-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Стиль підпунктів */
+.submenu div {
+    margin-top: 10px;
+    padding-left: 15px;
+    border-left: 2px solid #ccc;
+}
+
+/* Для випадаючого меню */
+.dropdown {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #49a078;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Відображення меню при наведенні */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 /* Основний стиль меню */
-#menuItems {
+/*#menuItems {
     margin-top: 20px;
 }
 
@@ -101,7 +153,7 @@ button {
 
 button:hover {
     background-color: #3d875e;
-}
+}*/
 
 /* Стиль для випадаючого списку (друга сторінка) */
 /* Горизонтальне меню */
