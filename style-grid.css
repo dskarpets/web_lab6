@@ -85,24 +85,36 @@ a:hover {
     border-left: 2px solid #ccc;
 }
 
-/* Для випадаючого меню */
-.dropdown {
-    margin-bottom: 20px;
-    padding: 10px;
+/* Горизонтальне меню */
+#dynamicMenu {
+    display: flex;
+    gap: 20px; /* Відстань між пунктами меню */
     background-color: #49a078;
+    padding: 10px;
     border-radius: 5px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #216869;
     color: white;
     font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
+    left: 0;
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    border-radius: 5px;
 }
 
 .dropdown-content a {
@@ -116,7 +128,7 @@ a:hover {
     background-color: #ddd;
 }
 
-/* Відображення меню при наведенні */
+/* Відображення підпунктів */
 .dropdown:hover .dropdown-content {
     display: block;
 }

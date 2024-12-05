@@ -33,8 +33,6 @@
                     <div class="menu-item">
                         <input type="text" name="menuTitle[]" placeholder="Назва елементу меню" required>
                         <div class="submenu">
-                            <input type="text" name="submenuTitle[]" placeholder="Назва підпункту">
-                            <input type="url" name="submenuLink[]" placeholder="Посилання для підпункту">
                         </div>
                         <button type="button" class="addSubmenu">Додати підпункт</button>
                     </div>
@@ -53,6 +51,7 @@
                 newItem.classList.add('menu-item');
                 newItem.innerHTML = `
         <input type="text" name="menuTitle[]" placeholder="Назва елементу меню" required>
+        <div class="submenu"></div>
         <button type="button" class="addSubmenu">Додати підпункт</button>
     `;
                 menuItems.appendChild(newItem);
@@ -86,21 +85,6 @@
                 document.getElementById('menuForm').addEventListener('submit', saveMenu);
             });
 
-            // Додати новий пункт меню
-            function addMenuItem() {
-                const menuItems = document.getElementById('menuItems');
-                const newItem = document.createElement('div');
-                newItem.classList.add('menu-item');
-                newItem.innerHTML = `
-        <input type="text" name="menuTitle[]" placeholder="Назва елементу меню" required>
-        <button type="button" class="addSubmenu">Додати підпункт</button>
-    `;
-                menuItems.appendChild(newItem);
-
-                // Прив'язуємо подію додавання підпунктів до нової кнопки
-                const newButton = newItem.querySelector('.addSubmenu');
-                newButton.addEventListener('click', addSubmenu);
-            }
 
             // Збереження меню
             async function saveMenu(event) {
