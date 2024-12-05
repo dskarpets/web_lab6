@@ -37,22 +37,22 @@
         const menuContainer = document.getElementById('dynamicMenu');
         menuContainer.innerHTML = ''; // Очищаємо контейнер перед додаванням
 
-        menuData.forEach(item => {
+        Object.keys(menuData).forEach((key) => {
           const menuItem = document.createElement('div');
           menuItem.classList.add('dropdown');
 
           const title = document.createElement('a');
           title.href = '#';
-          title.textContent = item.title;
+          title.textContent = `Menu ${key}`;
           menuItem.appendChild(title);
 
           const submenuContainer = document.createElement('div');
           submenuContainer.classList.add('dropdown-content');
 
-          item.submenus.forEach(sub => {
+          menuData[key].forEach((sub) => {
             const submenuItem = document.createElement('a');
-            submenuItem.href = sub.link;
-            submenuItem.textContent = sub.title;
+            submenuItem.href = '#';
+            submenuItem.textContent = sub;
             submenuContainer.appendChild(submenuItem);
           });
 

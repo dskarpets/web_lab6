@@ -94,26 +94,24 @@
                 event.preventDefault();
 
                 const formData = new FormData(event.target);
-                const menuData = [];
+                const menuData = {};
 
                 // Збираємо дані з форми
                 const menuItems = document.querySelectorAll('#menuItems .menu-item');
-                menuItems.forEach((menuItem) => {
-                    const menuTitle = menuItem.querySelector('input[name="menuTitle[]"]').value;
+                menuItems.forEach((menuItem, index) => {
+                    const menuKey = index + 1; // Генеруємо ключ як номер елемента
                     const submenus = [];
 
                     const submenuElements = menuItem.querySelectorAll('.submenu > div');
                     submenuElements.forEach((submenuElement) => {
                         const submenuTitle = submenuElement.querySelector('input[name="submenuTitle[]"]').value;
-                        const submenuLink = submenuElement.querySelector('input[name="submenuLink[]"]').value;
-
-                        if (submenuTitle && submenuLink) {
-                            submenus.push({ title: submenuTitle, link: submenuLink });
+                        if (submenuTitle) {
+                            submenus.push(submenuTitle); // Додаємо тільки назву підпункту
                         }
                     });
 
-                    if (menuTitle) {
-                        menuData.push({ title: menuTitle, submenus });
+                    if (submenus.length > 0) {
+                        menuData[menuKey] = submenus;
                     }
                 });
 
@@ -125,7 +123,6 @@
                 });
                 alert('Меню збережено!');
             }
-
         </script>
        <!-- <img src="images/pets.jpeg" alt="Фотографія домашніх тварин" usemap="#image-map">
 
