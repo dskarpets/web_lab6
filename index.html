@@ -67,14 +67,49 @@
 
             // Додати новий підпункт
             function addSubmenu(event) {
-                const submenuContainer = event.target.previousElementSibling; // Знаходимо контейнер підпунктів
-                const newSubmenu = document.createElement('div'); // Створюємо новий підпункт
+                const menuItem = event.target.closest('.menu-item'); // Знаходимо найближчий елемент меню
+                const submenuContainer = menuItem.querySelector('.submenu'); // Знаходимо контейнер підпунктів
+
+                if (!submenuContainer) {
+                    console.error('Не вдалося знайти контейнер підпунктів');
+                    return;
+                }
+
+                const newSubmenu = document.createElement('div'); // Створюємо новий елемент підпункту
+                newSubmenu.classList.add('submenu-item');
                 newSubmenu.innerHTML = `
-        <input type="text" name="submenuTitle[]" placeholder="Назва підпункту">
-        <input type="url" name="submenuLink[]" placeholder="Посилання для підпункту">
+        <input type="text" name="submenuTitle[]" placeholder="Назва підпункту" required>
+        <input type="url" name="submenuLink[]" placeholder="Посилання для підпункту" required>
     `;
                 submenuContainer.appendChild(newSubmenu); // Додаємо новий підпункт у контейнер
             }
+
+            // Прив'язка подій до існуючих кнопок
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelectorAll('.addSubmenu').forEach(button => {
+                    button.addEventListener('click', addSubmenu);
+                });
+
+                document.getElementById('addItem').addEventListener('click', addMenuItem);
+            });
+
+            // Додати новий пункт меню
+            function addMenuItem() {
+                const menuItems = document.getElementById('menuItems');
+                const newItem = document.createElement('div');
+                newItem.classList.add('menu-item');
+                newItem.innerHTML = `
+        <input type="text" name="menuTitle[]" placeholder="Назва елементу меню" required>
+        <div class="submenu"></div>
+        <button type="button" class="addSubmenu">Додати підпункт</button>
+    `;
+                menuItems.appendChild(newItem);
+
+                // Прив'язуємо подію додавання підпунктів до нової кнопки
+                const newButton = newItem.querySelector('.addSubmenu');
+                newButton.addEventListener('click', addSubmenu);
+            }
+
 
             // Відправити меню на сервер
             document.getElementById('menuForm').addEventListener('submit', async (event) => {
