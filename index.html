@@ -42,7 +42,23 @@
             </form>
         </div>
 
+
         <script>
+            // Додати новий пункт меню
+            document.getElementById('addItem').addEventListener('click', () => {
+                const menuItems = document.getElementById('menuItems');
+                const newItem = document.createElement('div');
+                newItem.classList.add('menu-item');
+                newItem.innerHTML = `
+        <input type="text" name="menuTitle[]" placeholder="Назва елементу меню" required>
+        <div class="submenu"></div>
+        <button type="button" class="addSubmenu">Додати підпункт</button>
+    `;
+                menuItems.appendChild(newItem);
+
+                // Прив'язати функціонал додавання підпунктів до нового пункту меню
+                newItem.querySelector('.addSubmenu').addEventListener('click', addSubmenu);
+            });
 
             // Додати новий підпункт
             function addSubmenu(event) {
