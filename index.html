@@ -44,18 +44,23 @@
 
 
         <script>
-
             // Додати новий підпункт
             function addSubmenu(event) {
-                const menuItem = event.target.closest('.menu-item');
-                const submenuContainer = menuItem.querySelector('.submenu');
+                const menuItem = event.target.closest('.menu-item'); // Знаходимо найближчий елемент меню
+                const submenuContainer = menuItem.querySelector('.submenu'); // Знаходимо контейнер підпунктів
 
-                const newSubmenu = document.createElement('div');
+                if (!submenuContainer) {
+                    console.error('Не вдалося знайти контейнер підпунктів');
+                    return;
+                }
+
+                const newSubmenu = document.createElement('div'); // Створюємо новий елемент підпункту
+                newSubmenu.classList.add('submenu-item');
                 newSubmenu.innerHTML = `
         <input type="text" name="submenuTitle[]" placeholder="Назва підпункту" required>
         <input type="url" name="submenuLink[]" placeholder="Посилання для підпункту">
     `;
-                submenuContainer.appendChild(newSubmenu);
+                submenuContainer.appendChild(newSubmenu); // Додаємо новий підпункт у контейнер
             }
 
             // Прив'язка подій до існуючих кнопок
@@ -65,11 +70,9 @@
                 });
 
                 document.getElementById('addItem').addEventListener('click', addMenuItem);
-
-                // Надсилання даних на сервер
-                document.getElementById('menuForm').addEventListener('submit', saveMenu);
             });
 
+            // Додати новий пункт меню
             function addMenuItem() {
                 const menuItems = document.getElementById('menuItems');
                 const newItem = document.createElement('div');
@@ -86,7 +89,6 @@
                 newButton.addEventListener('click', addSubmenu);
             }
 
-            // Збереження меню
             async function saveMenu(event) {
                 event.preventDefault();
 
@@ -115,18 +117,12 @@
                 });
 
                 // Відправляємо зібрані дані на сервер
-                try {
-                    const response = await fetch('save_menu.php', {
-                        method: 'POST',
-                        body: JSON.stringify(menuData),
-                        headers: { 'Content-Type': 'application/json' },
-                    });
-                    if (!response.ok) throw new Error('Помилка при збереженні меню');
-                    alert('Меню збережено!');
-                } catch (error) {
-                    console.error('Помилка:', error);
-                    alert('Не вдалося зберегти меню.');
-                }
+                await fetch('save_menu.php', {
+                    method: 'POST',
+                    body: JSON.stringify(menuData),
+                    headers: { 'Content-Type': 'application/json' },
+                });
+                alert('Меню збережено!');
             }
 
         </script>
