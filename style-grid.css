@@ -69,52 +69,32 @@ a:hover {
     text-decoration: underline;
 }
 
-.horizontal-menu {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background-color: #49a078;
-}
-
-.horizontal-menu > li {
+.dropdown {
     position: relative;
-    padding: 10px 20px;
+    display: inline-block;
 }
 
-.horizontal-menu > li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.horizontal-menu > li:hover {
-    background-color: #216869;
-}
-
-.horizontal-menu > li > ul {
+.dropdown-content {
     display: none;
     position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #9cc5a1;
-    list-style: none;
-    padding: 10px 0;
-    margin: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
-.horizontal-menu > li:hover > ul {
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
     display: block;
 }
 
-.horizontal-menu > li > ul > li {
-    padding: 5px 20px;
+.dropdown-content a:hover {
+    background-color: #ddd;
 }
 
-.horizontal-menu > li > ul > li a {
-    color: #000;
-    text-decoration: none;
-}
-
-.horizontal-menu > li > ul > li:hover {
-    background-color: #49a078;
+/* Випадання меню при наведенні */
+.dropdown:hover .dropdown-content {
+    display: block;
 }

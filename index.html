@@ -67,21 +67,15 @@
 
             // Додати новий підпункт
             function addSubmenu(event) {
-                const menuItem = event.target.closest('.menu-item'); // Знаходимо найближчий елемент меню
-                const submenuContainer = menuItem.querySelector('.submenu'); // Знаходимо контейнер підпунктів
+                const menuItem = event.target.closest('.menu-item');
+                const submenuContainer = menuItem.querySelector('.submenu');
 
-                if (!submenuContainer) {
-                    console.error('Не вдалося знайти контейнер підпунктів');
-                    return;
-                }
-
-                const newSubmenu = document.createElement('div'); // Створюємо новий елемент підпункту
-                newSubmenu.classList.add('submenu-item');
+                const newSubmenu = document.createElement('div');
                 newSubmenu.innerHTML = `
         <input type="text" name="submenuTitle[]" placeholder="Назва підпункту" required>
         <input type="url" name="submenuLink[]" placeholder="Посилання для підпункту" required>
     `;
-                submenuContainer.appendChild(newSubmenu); // Додаємо новий підпункт у контейнер
+                submenuContainer.appendChild(newSubmenu);
             }
 
             // Прив'язка подій до існуючих кнопок
@@ -91,6 +85,9 @@
                 });
 
                 document.getElementById('addItem').addEventListener('click', addMenuItem);
+
+                // Надсилання даних на сервер
+                document.getElementById('menuForm').addEventListener('submit', saveMenu);
             });
 
             // Додати новий пункт меню
@@ -110,17 +107,26 @@
                 newButton.addEventListener('click', addSubmenu);
             }
 
-
-            // Відправити меню на сервер
-            document.getElementById('menuForm').addEventListener('submit', async (event) => {
+            // Збереження меню
+            async function saveMenu(event) {
                 event.preventDefault();
+
                 const formData = new FormData(event.target);
 
-                // Організація даних у форматі JSON
-                const menuData = {};
-                [...formData.entries()].forEach(([key, value]) => {
-                    if (!menuData[key]) menuData[key] = [];
-                    menuData[key].push(value);
+                // Структуруємо дані у формат JSON
+                const menuData = [];
+                const menuTitles = formData.getAll('menuTitle[]');
+                const submenuTitles = formData.getAll('submenuTitle[]');
+                const submenuLinks = formData.getAll('submenuLink[]');
+
+                menuTitles.forEach((title, index) => {
+                    menuData.push({
+                        title,
+                        submenus: submenuTitles.map((subTitle, i) => ({
+                            title: subTitle,
+                            link: submenuLinks[i],
+                        })),
+                    });
                 });
 
                 // Надсилання на сервер
@@ -130,7 +136,8 @@
                     headers: { 'Content-Type': 'application/json' },
                 });
                 alert('Меню збережено!');
-            });
+            }
+
 
         </script>
        <!-- <img src="images/pets.jpeg" alt="Фотографія домашніх тварин" usemap="#image-map">
