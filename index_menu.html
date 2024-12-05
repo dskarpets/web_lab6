@@ -35,6 +35,8 @@
         const menuData = await response.json();
 
         const menuContainer = document.getElementById('dynamicMenu');
+        menuContainer.innerHTML = ''; // Очищаємо контейнер перед додаванням
+
         menuData.forEach(item => {
           const menuItem = document.createElement('div');
           menuItem.classList.add('dropdown');
@@ -60,6 +62,7 @@
       }
 
       document.addEventListener('DOMContentLoaded', loadMenu);
+
 
     </script>
     <!--<img src="images/pets.jpeg" alt="Фотографія домашніх тварин" usemap="#image-map">

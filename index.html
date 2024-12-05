@@ -112,24 +112,30 @@
                 event.preventDefault();
 
                 const formData = new FormData(event.target);
-
-                // Структуруємо дані у формат JSON
                 const menuData = [];
-                const menuTitles = formData.getAll('menuTitle[]');
-                const submenuTitles = formData.getAll('submenuTitle[]');
-                const submenuLinks = formData.getAll('submenuLink[]');
 
-                menuTitles.forEach((title, index) => {
-                    menuData.push({
-                        title,
-                        submenus: submenuTitles.map((subTitle, i) => ({
-                            title: subTitle,
-                            link: submenuLinks[i],
-                        })),
+                // Збираємо дані з форми
+                const menuItems = document.querySelectorAll('#menuItems .menu-item');
+                menuItems.forEach((menuItem) => {
+                    const menuTitle = menuItem.querySelector('input[name="menuTitle[]"]').value;
+                    const submenus = [];
+
+                    const submenuElements = menuItem.querySelectorAll('.submenu > div');
+                    submenuElements.forEach((submenuElement) => {
+                        const submenuTitle = submenuElement.querySelector('input[name="submenuTitle[]"]').value;
+                        const submenuLink = submenuElement.querySelector('input[name="submenuLink[]"]').value;
+
+                        if (submenuTitle && submenuLink) {
+                            submenus.push({ title: submenuTitle, link: submenuLink });
+                        }
                     });
+
+                    if (menuTitle) {
+                        menuData.push({ title: menuTitle, submenus });
+                    }
                 });
 
-                // Надсилання на сервер
+                // Відправляємо зібрані дані на сервер
                 await fetch('save_menu.php', {
                     method: 'POST',
                     body: JSON.stringify(menuData),
