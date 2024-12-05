@@ -68,3 +68,53 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+.horizontal-menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #49a078;
+}
+
+.horizontal-menu > li {
+    position: relative;
+    padding: 10px 20px;
+}
+
+.horizontal-menu > li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.horizontal-menu > li:hover {
+    background-color: #216869;
+}
+
+.horizontal-menu > li > ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #9cc5a1;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.horizontal-menu > li:hover > ul {
+    display: block;
+}
+
+.horizontal-menu > li > ul > li {
+    padding: 5px 20px;
+}
+
+.horizontal-menu > li > ul > li a {
+    color: #000;
+    text-decoration: none;
+}
+
+.horizontal-menu > li > ul > li:hover {
+    background-color: #49a078;
+}

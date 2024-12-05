@@ -44,6 +44,7 @@
             </form>
         </div>
 
+
         <script>
             // Додати новий пункт меню
             document.getElementById('addItem').addEventListener('click', () => {
@@ -66,13 +67,13 @@
 
             // Додати новий підпункт
             function addSubmenu(event) {
-                const submenu = event.target.previousElementSibling;
-                const newSubmenu = document.createElement('div');
+                const submenuContainer = event.target.previousElementSibling; // Знаходимо контейнер підпунктів
+                const newSubmenu = document.createElement('div'); // Створюємо новий підпункт
                 newSubmenu.innerHTML = `
         <input type="text" name="submenuTitle[]" placeholder="Назва підпункту">
         <input type="url" name="submenuLink[]" placeholder="Посилання для підпункту">
     `;
-                submenu.appendChild(newSubmenu);
+                submenuContainer.appendChild(newSubmenu); // Додаємо новий підпункт у контейнер
             }
 
             // Відправити меню на сервер
