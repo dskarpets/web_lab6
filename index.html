@@ -53,10 +53,6 @@
                 newItem.classList.add('menu-item');
                 newItem.innerHTML = `
         <input type="text" name="menuTitle[]" placeholder="Назва елементу меню" required>
-        <div class="submenu">
-            <input type="text" name="submenuTitle[]" placeholder="Назва підпункту">
-            <input type="url" name="submenuLink[]" placeholder="Посилання для підпункту">
-        </div>
         <button type="button" class="addSubmenu">Додати підпункт</button>
     `;
                 menuItems.appendChild(newItem);
@@ -73,7 +69,7 @@
                 const newSubmenu = document.createElement('div');
                 newSubmenu.innerHTML = `
         <input type="text" name="submenuTitle[]" placeholder="Назва підпункту" required>
-        <input type="url" name="submenuLink[]" placeholder="Посилання для підпункту" required>
+        <input type="url" name="submenuLink[]" placeholder="Посилання для підпункту">
     `;
                 submenuContainer.appendChild(newSubmenu);
             }
@@ -97,7 +93,6 @@
                 newItem.classList.add('menu-item');
                 newItem.innerHTML = `
         <input type="text" name="menuTitle[]" placeholder="Назва елементу меню" required>
-        <div class="submenu"></div>
         <button type="button" class="addSubmenu">Додати підпункт</button>
     `;
                 menuItems.appendChild(newItem);
